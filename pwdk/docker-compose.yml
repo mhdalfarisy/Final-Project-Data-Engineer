@@ -1,0 +1,155 @@
+# version: '3.4'
+
+# x-common:
+#   &common
+#   image: apache/airflow:latest
+#   user: "${AIRFLOW_UID}:0"
+#   env_file:
+#     - .env
+#   volumes:
+#     - ./dags:/opt/airflow/dags
+#     - ./logs:/opt/airflow/logs
+#     - ./config:/opt/airflow/config
+#     - ./plugins:/opt/airflow/plugins
+#     - ./secrets:/opt/airflow/secrets
+#     - ./data:/opt/airflow/resources
+#     - /var/run/docker.sock:/var/run/docker.sock
+
+# x-depends-on:
+#   &depends-on
+#   depends_on:
+#     postgres:
+#       condition: service_healthy
+#     airflow-init:
+#       condition: service_completed_successfully
+
+# services:
+#   postgres:
+#     image: postgres:13
+#     container_name: postgres-pdwk
+#     ports:
+#       - "5435:5432"
+#     healthcheck:
+#       test: ["CMD", "pg_isready", "-U", "airflow"]
+#       interval: 5s
+#       retries: 5
+#     env_file:
+#       - .env
+#     volumes:
+#       - postgres_data:/var/lib/postgresql/data  # Persist PostgreSQL data
+
+#   scheduler:
+#     <<: [*common, *depends-on]
+#     container_name: airflow-scheduler-pdwk
+#     command: scheduler
+#     restart: on-failure
+#     ports:
+#       - "8793:8793"
+
+#   webserver:
+#     <<: [*common, *depends-on]
+#     container_name: airflow-webserver-pwdk
+#     restart: always
+#     command: webserver
+#     ports:
+#       - "8989:8080"
+#     volumes:
+#       - "D:/Training SSIS + Python + Streamlit/ETL Daily Attendance Employee/pwdk/resources/data_to_postgres:/opt/airflow/resources/"    
+#     healthcheck:
+#       test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
+#       interval: 30s
+#       timeout: 30s
+#       retries: 5
+
+#   airflow-init:
+#     <<: *common
+#     container_name: airflow-init-pwdk
+#     entrypoint: /bin/bash
+#     command:
+#       - -c
+#       - |
+#         mkdir -p /sources/logs /sources/dags /sources/plugins
+#         chown -R "${AIRFLOW_UID}:0" /sources/{logs,dags,plugins}
+#         exec /entrypoint airflow version
+
+# volumes:
+#   postgres_data: 
+
+version: '3.4'
+
+x-common:
+  &common
+  image: apache/airflow:latest
+  user: "${AIRFLOW_UID}:0"
+  env_file:
+    - .env  # Pastikan .env kamu berisi secret_key
+  environment:
+    - AIRFLOW__WEBSERVER__SECRET_KEY=b'\x044\xa7\x7fn\xa5\x7f\x98\x12\xc8\xc8\xf44\x0b\xe4\x92\x1d\xfc*\x9fAj\xb8\xa5'
+  volumes:
+    - ./dags:/opt/airflow/dags
+    - ./logs:/opt/airflow/logs
+    - ./config:/opt/airflow/config
+    - ./plugins:/opt/airflow/plugins
+    - ./secrets:/opt/airflow/secrets
+    - ./resources:/opt/airflow/resources
+    - /var/run/docker.sock:/var/run/docker.sock
+
+x-depends-on:
+  &depends-on
+  depends_on:
+    postgres:
+      condition: service_healthy
+    airflow-init:
+      condition: service_completed_successfully
+
+services:
+  postgres:
+    image: postgres:13
+    container_name: postgres-pdwk
+    ports:
+      - "5435:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 5s
+      retries: 5
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persist PostgreSQL data
+
+  scheduler:
+    <<: [*common, *depends-on]
+    container_name: airflow-scheduler-pdwk
+    command: scheduler
+    restart: on-failure
+    ports:
+      - "8793:8793"
+
+  webserver:
+    <<: [*common, *depends-on]
+    container_name: airflow-webserver-pwdk
+    restart: always
+    command: webserver
+    ports:
+      - "8989:8080"
+    volumes:
+      - "D:/Training SSIS + Python + Streamlit/ETL Daily Attendance Employee/pwdk/resources/data_to_postgres:/opt/airflow/resources/"
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+  
+  airflow-init:
+    <<: *common
+    container_name: airflow-init-pwdk
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - |
+        mkdir -p /sources/logs /sources/dags /sources/plugins
+        chown -R "${AIRFLOW_UID}:0" /sources/{logs,dags,plugins}
+        exec /entrypoint airflow version
+
+volumes:
+  postgres_data:
