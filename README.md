@@ -1,3 +1,3 @@
-## PROJECT : Pakistan Large E-Commers
+## PROJECT : Monitoring Factory Workers’ Daily Performance & Attrition
 
-![a1](https://github.com/mhdalfarisy/EDA---Pakistan-s-Larges-Ecommers/blob/main/Images/62253a402fccf.jpg)
+![a1](https://github.com/mhdalfarisy/Final-Project-Data-Engineer/blob/main/assets/Batch%20Processing%20Flow.jpg
