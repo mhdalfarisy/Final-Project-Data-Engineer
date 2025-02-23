@@ -1,6 +1,12 @@
 ## PROJECT : Monitoring Factory Workers’ Daily Performance & Attrition
 
-![a1](https://github.com/mhdalfarisy/Final-Project-Data-Engineer/blob/main/assets/Batch%20Processing%20Flow.jpg)
+![a1](https://github.com/mhdalfarisy/Final-Project-Data-Engineer/blob/main/assets/Batch%20Processing%20Flow.jpg
+
+Link Dashboard Power BI : 
+<a href="https://app.powerbi.com/view?r=eyJrIjoiNDk2ZjM0N2MtZTM3My00NjJkLTlkNmEtMTQ3OGYzNTJkZTlhIiwidCI6ImVhZmZiNWNlLTYwZGQtNDNhNC05Mjg3LTc5MzEzMmM2ODQzZSIsImMiOjEwfQ%3D%3D" target="_blank">
+    Dashboard Monitoring Factory Workers’ Daily Performance & Attrition
+</a>
+
 
 Dataset Description :
 
