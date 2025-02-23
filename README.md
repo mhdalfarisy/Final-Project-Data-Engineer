@@ -1,28 +1,63 @@
-## PROJECT : Monitoring Factory Workers’ Daily Performance & Attrition
+# Monitoring Factory Workers’ Daily Performance & Attrition
 
-![a1](https://github.com/mhdalfarisy/Final-Project-Data-Engineer/blob/main/assets/Batch%20Processing%20Flow.jpg
+## Project Overview
 
-Link Dashboard Power BI : 
-<a href="https://app.powerbi.com/view?r=eyJrIjoiNDk2ZjM0N2MtZTM3My00NjJkLTlkNmEtMTQ3OGYzNTJkZTlhIiwidCI6ImVhZmZiNWNlLTYwZGQtNDNhNC05Mjg3LTc5MzEzMmM2ODQzZSIsImMiOjEwfQ%3D%3D" target="_blank">
-    Dashboard Monitoring Factory Workers’ Daily Performance & Attrition
-</a>
+![Batch Processing Flow](https://raw.githubusercontent.com/mhdalfarisy/Final-Project-Data-Engineer/main/assets/Batch%20Processing%20Flow.jpg)
 
+### 🔗 Link Dashboard Power BI:  
+[Dashboard Monitoring Factory Workers’ Daily Performance & Attrition](https://app.powerbi.com/view?r=eyJrIjoiNDk2ZjM0N2MtZTM3My00NjJkLTlkNmEtMTQ3OGYzNTJkZTlhIiwidCI6ImVhZmZiNWNlLTYwZGQtNDNhNC05Mjg3LTc5MzEzMmM2ODQzZSIsImMiOjEwfQ%3D%3D)
 
-Dataset Description :
+---
 
-Kumpulan data sintetis ini berisi data kinerja dan pengurangan karyawan harian selama 18 bulan (411.948 observasi) untuk sebuah pabrik yang struktur organisasinya terdiri dari 508 pekerja. Karena pergantian karyawan, total 687 orang muncul dalam kumpulan data tersebut. Observasi kumpulan data tersebut mencakup kejadian harian yang rutin (seperti kehadiran pekerja dan tingkat Efikasi harian) dan kejadian khusus satu kali (seperti kecelakaan, pemutusan hubungan kerja karyawan, atau penerimaan karyawan baru). Fitur unik dari kumpulan data tersebut adalah berbagai hubungan kausal yang "tersembunyi" dalam data yang menunggu untuk diungkap melalui pembelajaran mesin. Misalnya, seseorang dapat menerapkan pembelajaran mesin untuk menyelidiki:
+## 📊 Dataset Description
 
--  Bagaimana kinerja tinggi seorang pekerja meningkatkan kemungkinan bahwa ia akan “dipekerjakan” ke pekerjaan yang lebih baik oleh perusahaan pesaing.
-- Bagaimana kekhilafan mental atau kecelakaan fisik yang dialami seorang pekerja dapat menjadi indikasi bahwa ia sedang sakit dan dapat segera kehilangan satu hari kerja karena sakit.
-- Bagaimana Efikasi pekerja dipengaruhi oleh hari dalam seminggu, hari dalam sebulan, dan bulan dalam setahun.
-- Bagaimana Efikasi harian rata-rata pekerja dipengaruhi oleh perbedaan usia antara mereka dan atasan mereka.
-- Bagaimana Efikasi harian rata-rata seorang pekerja dipengaruhi oleh apakah ia bekerja terutama dengan rekan satu tim yang berjenis kelamin sama atau berlawanan.
-- Bagaimana jumlah perilaku “Kerja Sama Tim” dan “Gangguan” yang ditunjukkan oleh pekerja dan dicatat oleh manajer mereka dipengaruhi oleh hari dalam sebulan (dan, misalnya, stres yang disebabkan oleh tenggat waktu produksi yang akan datang).
-- Bagaimana pekerja dapat diklasifikasikan ke dalam kelompok dengan Efikasi harian tinggi, sedang, atau rendah yang relatif stabil atau sangat bervariasi.
+Kumpulan data sintetis ini berisi data kinerja dan pengurangan karyawan harian selama **18 bulan** (411.948 observasi) untuk sebuah pabrik dengan struktur organisasi yang terdiri dari **508 pekerja**. Karena adanya pergantian karyawan, total **687 orang** muncul dalam dataset ini.  
 
-## VISUALIZATION : Monitoring Factory Workers’ Daily Performance & Attrition
+Dataset ini mencakup berbagai kejadian harian seperti:
+- **Kehadiran pekerja**  
+- **Tingkat efikasi harian**  
+- **Kecelakaan kerja**  
+- **Pemutusan hubungan kerja (PHK)**  
+- **Penerimaan karyawan baru**  
 
-![a1](https://github.com/mhdalfarisy/Final-Project-Data-Engineer/blob/main/assets/Picture1.jpg)
+Dataset ini juga memiliki hubungan kausal tersembunyi yang dapat diungkap melalui teknik **Machine Learning**.
 
-![a1](https://github.com/mhdalfarisy/Final-Project-Data-Engineer/blob/main/assets/Picture2.jpg)
+### 🔍 Analisis yang dapat dilakukan:
+- Bagaimana kinerja tinggi pekerja meningkatkan peluang mereka direkrut oleh pesaing.
+- Bagaimana kesalahan mental atau kecelakaan dapat menjadi indikasi pekerja sedang sakit.
+- Pengaruh hari dalam seminggu, bulan, dan tahun terhadap efikasi pekerja.
+- Hubungan antara perbedaan usia dengan atasan terhadap efikasi pekerja.
+- Pengaruh gender dalam tim terhadap produktivitas pekerja.
+- Korelasi antara tekanan tenggat waktu dengan perilaku kerja sama tim dan gangguan.
+- Pengelompokan pekerja berdasarkan efikasi harian tinggi, sedang, atau rendah.
 
+---
+
+## 📈 Visualization
+
+### 1️⃣ Batch Processing Flow
+![Batch Processing Flow](https://raw.githubusercontent.com/mhdalfarisy/Final-Project-Data-Engineer/main/assets/Batch%20Processing%20Flow.jpg)
+
+### 2️⃣ Monitoring Dashboard  
+![Visualization 1](https://raw.githubusercontent.com/mhdalfarisy/Final-Project-Data-Engineer/main/assets/Picture1.jpg)
+
+![Visualization 2](https://raw.githubusercontent.com/mhdalfarisy/Final-Project-Data-Engineer/main/assets/Picture2.jpg)
+
+---
+
+## 🛠️ Tech Stack
+
+- **Google Cloud Platform (GCP)**: BigQuery, Cloud Storage, Dataflow  
+- **Python**: Pandas, NumPy, Scikit-learn  
+- **Power BI**: Data visualization  
+- **SQL**: Data extraction & transformation  
+- **Apache Airflow**: Workflow orchestration  
+- **Git & GitHub**: Version control  
+
+---
+
+## 📢 How to Use
+
+1. Clone repository ini ke lokal:
+   ```sh
+   git clone https://github.com/mhdalfarisy/Final-Project-Data-Engineer.git
