@@ -1,63 +1,51 @@
 # Monitoring Factory Workers’ Daily Performance & Attrition
 
-## Project Overview
+## 🏗️ Technical Architecture & Tool Stack
+![Technical Architecture - Airflow Batch Processing](https://raw.githubusercontent.com/mhdalfarisy/mhdalfarisy.github.io/main/src/assets/images/Batch_Processing_Flow_airflow.png)
 
-![Batch Processing Flow](https://raw.githubusercontent.com/mhdalfarisy/Final-Project-Data-Engineer/main/assets/Batch%20Processing%20Flow.jpg)
-
-### 🔗 Link Dashboard Power BI:  
-[Dashboard Monitoring Factory Workers’ Daily Performance & Attrition](https://app.powerbi.com/view?r=eyJrIjoiNDk2ZjM0N2MtZTM3My00NjJkLTlkNmEtMTQ3OGYzNTJkZTlhIiwidCI6ImVhZmZiNWNlLTYwZGQtNDNhNC05Mjg3LTc5MzEzMmM2ODQzZSIsImMiOjEwfQ%3D%3D)
-
----
-
-## 📊 Dataset Description
-
-Kumpulan data sintetis ini berisi data kinerja dan pengurangan karyawan harian selama **18 bulan** (411.948 observasi) untuk sebuah pabrik dengan struktur organisasi yang terdiri dari **508 pekerja**. Karena adanya pergantian karyawan, total **687 orang** muncul dalam dataset ini.  
-
-Dataset ini mencakup berbagai kejadian harian seperti:
-- **Kehadiran pekerja**  
-- **Tingkat efikasi harian**  
-- **Kecelakaan kerja**  
-- **Pemutusan hubungan kerja (PHK)**  
-- **Penerimaan karyawan baru**  
-
-Dataset ini juga memiliki hubungan kausal tersembunyi yang dapat diungkap melalui teknik **Machine Learning**.
-
-### 🔍 Analisis yang dapat dilakukan:
-- Bagaimana kinerja tinggi pekerja meningkatkan peluang mereka direkrut oleh pesaing.
-- Bagaimana kesalahan mental atau kecelakaan dapat menjadi indikasi pekerja sedang sakit.
-- Pengaruh hari dalam seminggu, bulan, dan tahun terhadap efikasi pekerja.
-- Hubungan antara perbedaan usia dengan atasan terhadap efikasi pekerja.
-- Pengaruh gender dalam tim terhadap produktivitas pekerja.
-- Korelasi antara tekanan tenggat waktu dengan perilaku kerja sama tim dan gangguan.
-- Pengelompokan pekerja berdasarkan efikasi harian tinggi, sedang, atau rendah.
-
----
-
-## 📈 Visualization
-
-### 1️⃣ Batch Processing Flow
-![Batch Processing Flow](https://raw.githubusercontent.com/mhdalfarisy/Final-Project-Data-Engineer/main/assets/Batch%20Processing%20Flow.jpg)
-
-### 2️⃣ Monitoring Dashboard  
-![Visualization 1](https://raw.githubusercontent.com/mhdalfarisy/Final-Project-Data-Engineer/main/assets/Picture1.jpg)
-
-![Visualization 2](https://raw.githubusercontent.com/mhdalfarisy/Final-Project-Data-Engineer/main/assets/Picture2.jpg)
+## 📌 Project Overview
+This project demonstrates an End-to-End **Batch Processing Pipeline** designed to handle large-scale data workflows. The pipeline automates data ingestion from flat files, performs complex transformations, and stores the processed data in a relational database for advanced business intelligence and visualization.
 
 ---
 
 ## 🛠️ Tech Stack
-
-- **Google Cloud Platform (GCP)**: BigQuery, Cloud Storage, Dataflow  
-- **Python**: Pandas, NumPy, Scikit-learn  
-- **Power BI**: Data visualization  
-- **SQL**: Data extraction & transformation  
-- **Apache Airflow**: Workflow orchestration  
-- **Git & GitHub**: Version control  
+* **Orchestration:** [Apache Airflow](https://airflow.apache.org/) (Managing DAGs and task dependencies).
+* **Processing:** [Python](https://www.python.org/) (Pandas for data transformation and ETL logic).
+* **Database:** [PostgreSQL](https://www.postgresql.org/) (Serving as the Data Sink/Warehouse).
+* **Containerization:** [Docker](https://www.docker.com/) (Ensuring consistent environments for Airflow and DB).
+* **Visualization:** [Power BI](https://powerbi.microsoft.com/) (Interactive dashboards and analytical reporting).
 
 ---
 
-## 📢 How to Use
+## ⚙️ Data Pipeline Workflow
 
-1. Clone repository ini ke lokal:
-   ```sh
-   git clone https://github.com/mhdalfarisy/Final-Project-Data-Engineer.git
+### 1. Ingestion (Extract)
+* Raw data is sourced from **CSV** files.
+* The extraction process is triggered and monitored by **Apache Airflow** DAGs.
+
+### 2. Processing (Transform)
+* **Data Cleaning:** Handling missing values, duplicates, and data type formatting.
+* **Business Logic:** Applying transformations using Python to prepare the data for analytical schemas.
+* **Efficiency:** Scripted for high-performance batch processing within a containerized environment.
+
+### 3. Storage (Load)
+* Processed data is loaded into a **PostgreSQL** database.
+* Optimized table structures (Star Schema/Snowflake) to ensure fast query performance for BI tools.
+
+### 4. Monitoring & Visualization
+* **Containerization:** The entire stack (Airflow, Postgres) runs on **Docker** for seamless deployment.
+* **Reporting:** Power BI connects to PostgreSQL to deliver real-time insights and trend analysis.
+
+---
+
+## 📂 Project Structure
+```text
+.
+├── dags/
+│   └── etl_workflow.py       # Airflow DAG definitions
+├── scripts/
+│   └── transformation.py     # Python ETL logic
+├── docker-compose.yaml       # Docker configuration for Airflow & Postgres
+├── data/
+│   └── raw_data.csv          # Source dataset
+└── README.md
